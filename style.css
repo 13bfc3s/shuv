@@ -12,7 +12,7 @@ a { color: var(--accent); }
 h1, h2, h3 { line-height: 1.15; }
 h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 0 0 0.6em; }
 h3 { font-size: 1.1rem; margin: 0.6em 0 0.3em; }
-section { padding: 56px 16px; }
+section.wrap { padding-top: 56px; padding-bottom: 56px; }
 section + section { border-top: 1px solid var(--rule); }
 
 .hero { background: radial-gradient(120% 90% at 85% 30%, #2C2438 0%, var(--shell) 60%); padding: 64px 0 72px; }
@@ -53,5 +53,5 @@ p code { background: var(--shell-2); padding: 1px 6px; border-radius: 4px; }
   .hero { padding: 40px 0 48px; }
   .hero-grid, .steps, .facts { grid-template-columns: 1fr; }
   .pager { max-width: 200px; order: -1; justify-self: start; }
-  section { padding: 40px 0; }
+  section.wrap { padding-top: 40px; padding-bottom: 40px; }
 }
