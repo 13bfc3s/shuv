@@ -1,0 +1,56 @@
+name: Shuv approval
+description: Ask a person on their phone and wait for the answer. Holds a deploy until someone taps Approve.
+author: Shuv
+branding: { icon: smartphone, color: purple }
+inputs:
+  key:
+    description: Shuv API key with send and read-replies access. Store it as a secret.
+    required: true
+  question:
+    description: Short question shown as the notification title (max 120 characters).
+    required: true
+  details:
+    description: What the person needs to know to decide. Defaults to the repository, ref, workflow and run link.
+    required: false
+  options:
+    description: Comma-separated answers shown as buttons (2-8).
+    default: Approve,Reject
+  pass-on:
+    description: Comma-separated answers that let the job continue. Defaults to the first option.
+    required: false
+  timeout:
+    description: How long to wait, like 30m, 2h or 1d (max 7d).
+    default: 30m
+  default:
+    description: Answer recorded if nobody answers in time. Without it, the step fails at the deadline.
+    required: false
+  team:
+    description: Ask everyone on your Shuv team (true/false).
+    default: "false"
+  escalate:
+    description: Also ask your team if you haven't answered in this long, like 5m.
+    required: false
+  api:
+    description: Shuv API origin.
+    default: https://shuv.cloud
+outputs:
+  answer: { description: The chosen option (or typed answer), value: "${{ steps.ask.outputs.answer }}" }
+  answered-by: { description: Email of whoever answered, value: "${{ steps.ask.outputs.answered-by }}" }
+  timed-out: { description: "true when the default was used", value: "${{ steps.ask.outputs.timed-out }}" }
+runs:
+  using: composite
+  steps:
+    - id: ask
+      shell: bash
+      run: python3 "$GITHUB_ACTION_PATH/ask.py"
+      env:
+        SHUV_KEY: ${{ inputs.key }}
+        SHUV_QUESTION: ${{ inputs.question }}
+        SHUV_DETAILS: ${{ inputs.details }}
+        SHUV_OPTIONS: ${{ inputs.options }}
+        SHUV_PASS_ON: ${{ inputs.pass-on }}
+        SHUV_TIMEOUT: ${{ inputs.timeout }}
+        SHUV_DEFAULT: ${{ inputs.default }}
+        SHUV_TEAM: ${{ inputs.team }}
+        SHUV_ESCALATE: ${{ inputs.escalate }}
+        SHUV_API: ${{ inputs.api }}
