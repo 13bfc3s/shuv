@@ -1,75 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shuv — two-way notifications for agents</title>
-  <meta name="description" content="Shuv lets your agents send you a notification and get your reply back. Why push when you can Shuv?">
-  <meta property="og:title" content="Shuv"><meta property="og:description" content="Two-way notifications for agents and their humans.">
-  <link rel="icon" href="pager.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&display=swap">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shuv</title>
+<link rel="canonical" href="https://shuv.cloud/">
+<meta http-equiv="refresh" content="0; url=https://shuv.cloud/">
+<meta name="robots" content="noindex">
+<link rel="icon" href="pager.svg" type="image/svg+xml">
 </head>
 <body>
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="lcd-tag">SHUV</p>
-      <h1>Why push when you can Shuv?</h1>
-      <p class="lede">Your agents send you a Shuv. You read it on your phone and reply. The agent gets your answer back through the API. It's a two-way pager for the things you've put to work.</p>
-      <div class="cta">
-        <a class="btn" href="mailto:c4xbrx4lc@mozmail.com?subject=Shuv%20beta%20invite">Request a beta invite</a>
-        <a class="link" href="#api">See the API</a>
-      </div>
-    </div>
-    <img class="pager" src="pager.svg" alt="A purple two-way pager with a green LCD showing SHUV" width="320" height="320">
-  </div>
-</header>
-
-<main>
-  <section class="wrap" aria-labelledby="how">
-    <h2 id="how">How it works</h2>
-    <ol class="steps">
-      <li><span class="num">1</span><h3>Connect your phone</h3><p>Sign in to Shuv for Android with Google. Your phone is now a device on your account.</p></li>
-      <li><span class="num">2</span><h3>Give your agent a key</h3><p>Create an API key in the app. Hand it to a script, a CI job or an AI agent.</p></li>
-      <li><span class="num">3</span><h3>Get Shuved, Shuv back</h3><p>The agent sends a title and message. Your phone buzzes. Tap reply, and the agent picks up your answer.</p></li>
-    </ol>
-  </section>
-
-  <section class="wrap" id="api" aria-labelledby="api-h">
-    <h2 id="api-h">Two calls. That's the API.</h2>
-    <p>Send a Shuv with your API key. An idempotency key makes retries safe.</p>
-<pre><code>curl -X POST "$SHUV_API/v1/shuvs" \
-  -H "Authorization: Bearer $SHUV_KEY" \
-  -H "Idempotency-Key: deploy-4812" \
-  -H "Content-Type: application/json" \
-  -d '{"title":"Deploy ready","body":"Ship build 4812 to production?"}'</code></pre>
-    <p>Then poll for your reply with the same key. Until you answer, it returns <code>202</code> with a <code>Retry-After</code> hint.</p>
-<pre><code>curl "$SHUV_API/v1/shuvs/$SHUV_ID/response" \
-  -H "Authorization: Bearer $SHUV_KEY"</code></pre>
-  </section>
-
-  <section class="wrap" aria-labelledby="trust">
-    <h2 id="trust">Built to stay out of trouble</h2>
-    <ul class="facts">
-      <li><strong>Scoped, expiring keys.</strong> Keys can only send and read their own replies, expire within a year and can be revoked from your phone.</li>
-      <li><strong>Hard limits.</strong> Rate limits and a cap on devices per Shuv. A runaway agent can't flood you.</li>
-      <li><strong>No tracking.</strong> No ads, no analytics. Your Shuv history is stored encrypted on your phone.</li>
-      <li><strong>Plain about encryption.</strong> Messages travel over HTTPS but aren't end-to-end encrypted yet, so don't send secrets in a Shuv.</li>
-    </ul>
-  </section>
-
-  <section class="wrap beta" aria-labelledby="beta">
-    <h2 id="beta">Invite-only beta</h2>
-    <p>Shuv for Android is in a small, free beta. An iPhone app and paid plans come later. Want in? Email us and say what you'd have your agents Shuv you about.</p>
-    <a class="btn" href="mailto:c4xbrx4lc@mozmail.com?subject=Shuv%20beta%20invite">Request a beta invite</a>
-  </section>
-</main>
-
-<footer class="wrap foot">
-  <span>© 2026 13bfc3s</span>
-  <a href="https://13bfc3s.github.io/privacypolicy/shuv/">Privacy policy</a>
-  <a href="mailto:c4xbrx4lc@mozmail.com">Contact</a>
-</footer>
+<p>Shuv has moved to <a href="https://shuv.cloud/">shuv.cloud</a>.</p>
 </body>
 </html>
